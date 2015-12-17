@@ -15,7 +15,9 @@
       'localsense.login',
       'localsense.auth',
       'localsense.welcome',
-      'localsense.dashboard'
+      'localsense.dashboard',
+      'localsense.locations',
+      'localsense.map'
     ]);
 
 })();
