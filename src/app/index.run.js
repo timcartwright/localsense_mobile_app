@@ -20,8 +20,9 @@
     });
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-      if (toState.authenticate && AuthService.isAuthorised()){
-        $state.transitionTo("home");
+      if (toState.authenticate && !AuthService.isAuthorised()){
+        console.log('unauth');
+        $state.go('login');
         event.preventDefault();
       }
     });

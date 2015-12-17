@@ -13,7 +13,9 @@
       'ngResource', 
       'ui.router', 
       'localsense.login',
-      'localsense.auth'
+      'localsense.auth',
+      'localsense.welcome',
+      'localsense.dashboard'
     ]);
 
 })();

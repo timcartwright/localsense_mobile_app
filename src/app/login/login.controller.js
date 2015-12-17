@@ -13,7 +13,7 @@
     login.submit = function() {
       AuthService.logIn();
       $log.debug(AuthService.isAuthorised());
-      $state.go('login');
+      $state.go('welcome');
     };
 
     $log.debug('LoginCtrl end');
