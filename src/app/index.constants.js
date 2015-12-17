@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('ionic')
+    .module('localsense')
     .constant('malarkey', malarkey)
     .constant('moment', moment);
 

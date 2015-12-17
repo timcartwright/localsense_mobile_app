@@ -2,20 +2,20 @@
   'use strict';
 
   angular
-    .module('ionic')
+    .module('localsense')
     .config(routerConfig);
 
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
+      .state('main', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
+        templateUrl: '/main/login.html',
+        controller: 'MainCtrl',
         controllerAs: 'main'
       });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/login');
   }
 
 })();

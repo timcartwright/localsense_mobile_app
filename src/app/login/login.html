@@ -1,0 +1,20 @@
+<ion-view title="LocalSense">
+  <ion-content>
+
+    <div>
+      <div id="map" map lat="52" lng="0" zoom="8">
+      </div>
+
+      <div width="80%" class="list list-inset" style="margin-left:10%;margin-right:10%;">
+        
+        <button class="button button-full button-positive" ng-click="map.saveDetails()">
+            Start Game
+        </button>
+        <button class="button button-full button-positive" ng-click="map.endGame()">
+            End Game
+        </button>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

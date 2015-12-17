@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('ionic')
+    .module('localsense')
     .config(config);
 
   /** @ngInject */
