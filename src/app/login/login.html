@@ -1,20 +1,27 @@
 <ion-view title="LocalSense">
   <ion-content>
-
-    <div>
-      <div id="map" map lat="52" lng="0" zoom="8">
+    <div class="row">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">Game ID</span>
+          <input type="text" ng-model="login.game">
+        </label>
       </div>
-
-      <div width="80%" class="list list-inset" style="margin-left:10%;margin-right:10%;">
-        
-        <button class="button button-full button-positive" ng-click="map.saveDetails()">
-            Start Game
-        </button>
-        <button class="button button-full button-positive" ng-click="map.endGame()">
-            End Game
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">Your Name</span>
+          <input type="text" ng-model="login.name">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-full button-positive" ng-click="login.submit()">
+          Login
         </button>
       </div>
     </div>
-
   </ion-content>
 </ion-view>

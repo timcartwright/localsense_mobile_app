@@ -12,7 +12,8 @@
         url: '/login',
         templateUrl: 'app/login/login.html',
         controller: 'LoginCtrl',
-        controllerAs: 'login'
+        controllerAs: 'login',
+        authenticate: false
       });
   };
 
