@@ -11,7 +11,7 @@
 
     locations.selectLocation = function(itemId) {
       DataService.setCurrentLocation(itemId);
-      $state.go('dashboard')
+      $state.go('dashboard');
     };
 
   };

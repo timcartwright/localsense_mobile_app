@@ -7,7 +7,7 @@
   function DashboardCtrl($state, $ionicPopup, AuthService, DataService) {
     var dashboard = this;
 
-    console.log(DataService.locations());
+    dashboard.task = DataService.getCurrentLocation();
   };
 
 })();
