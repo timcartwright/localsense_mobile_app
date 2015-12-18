@@ -6,24 +6,29 @@
 
   function DataService() {
 
-    var currentLocation = 0;
+    var currentLocation = 1;
 
     return {
       player: player,
       game: game,
-      locations: locations,
-      getCurrentLocation: getCurrentLocation,
-      setCurrentLocation: setCurrentLocation
-      // progress: progress,
-      // score: score
+      gameLocations: gameLocations,
+      getCurrentGameLocation: getCurrentGameLocation,
+      setCurrentGameLocation: setCurrentGameLocation,
+      getStatus: getStatus
+    }
+
+    function getStatus() {
+      return {
+        score: 50,
+        progress: 66
+      }
     }
 
     function player() {
       return {
         name: 'Tim',
         mobile_number: '07769665014',
-        score: 50,
-        current_location: ''
+        location: ''
       };
     }
 
@@ -35,21 +40,23 @@
       };
     }
 
-    function setCurrentLocation(id) {
+    function setCurrentGameLocation(id) {
       currentLocation = id;
     }
 
-    function getCurrentLocation() {
-      var array = locations();
+    function getCurrentGameLocation() {
+      var array = gameLocations();
 
+      // search locations by id
       for (var i=0; i<array.length; i++) {
         if (array[i].id == currentLocation) {
           return array[i];
         };
       };
+      return array[0]; // return first task if no match
     }
 
-    function locations() {
+    function gameLocations() {
       return [
         { 
           id: 1,
