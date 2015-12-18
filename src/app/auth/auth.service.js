@@ -16,7 +16,7 @@
 
     function isAuthorised() {
       return authorised;
-    }
+    };
 
     function logIn() {
       authorised = true;

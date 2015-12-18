@@ -14,6 +14,7 @@
       'ui.router', 
       'localsense.login',
       'localsense.auth',
+      'localsense.data',
       'localsense.welcome',
       'localsense.dashboard',
       'localsense.locations',

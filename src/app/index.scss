@@ -9,3 +9,10 @@
    all your sass files automatically */
 // injector
 // endinjector
+
+
+.disabled {
+  color: #ccc;
+  pointer-events: none;
+  cursor: default;
+}

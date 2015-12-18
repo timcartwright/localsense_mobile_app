@@ -13,7 +13,7 @@
         templateUrl: 'app/locations/locations.html',
         controller: 'LocationsCtrl',
         controllerAs: 'locations',
-        authenticate: true
+        authenticate: false
       });
   };
 

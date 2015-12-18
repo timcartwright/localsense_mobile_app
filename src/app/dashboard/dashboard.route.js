@@ -13,7 +13,7 @@
         templateUrl: 'app/dashboard/dashboard.html',
         controller: 'DashboardCtrl',
         controllerAs: 'dashboard',
-        authenticate: true
+        authenticate: false
       });
   };
 
