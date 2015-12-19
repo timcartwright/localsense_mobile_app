@@ -23,7 +23,7 @@
     }
 
     function arrived() {
-
+      console.log('Arrived!');
     }
 
   };

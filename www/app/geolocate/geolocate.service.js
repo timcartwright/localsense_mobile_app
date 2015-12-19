@@ -21,7 +21,9 @@
         hb();
       }, 
       end: function() {
-        clearTimeout(proximityCheck);
+        if (proximityCheck) {
+          proximityCheck.clearWatch();
+        };
       },
       setTarget: function(longitude, latitiude) {
         long = longitude;
@@ -34,8 +36,10 @@
       console.log('hb running');
       processing = true;
       var posOptions = {timeout: 60000, enableHighAccuracy: true, maximumAge: 0};
-      $cordovaGeolocation.getCurrentPosition(posOptions)
-        .then(function(position) {
+      proximityCheck = $cordovaGeolocation.watchPosition(posOptions);
+      proximityCheck.then(null, positionError, location);
+
+      function location(position) {
           processing = false;
           console.log(lat, long);
           console.log(position.coords.latitude, position.coords.longitude);
@@ -43,15 +47,15 @@
           console.log("dist in km is "+dist);
           console.log("accuracy is "+position.coords.accuracy);
           
-          if(dist <= minDistance) {
+          if(position.coords.accuracy <= 50 && dist <= minDistance) {
+            $cordovaGeolocation.clearWatch(proximityCheck);
             callback();
-          } else {
-            proximityCheck = setTimeout(hb, delay);
           };
-      },  function(error) {
-            console.log('error:', error);
-            proximityCheck = setTimeout(hb, delay);
-          });
+      }
+
+      function positionError() {
+        console.log('error:', error);
+      }
     };
 
     // Credit: http://stackoverflow.com/a/27943/52160   
