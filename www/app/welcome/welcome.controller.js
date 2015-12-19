@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('localsense.welcome')
-  .controller('WelcomeCtrl', ['$state', '$ionicPopup', '$log', 'AuthService', WelcomeCtrl]);
+  .controller('WelcomeCtrl', ['$state', '$ionicPopup', 'AuthService', WelcomeCtrl]);
 
   function WelcomeCtrl($state, $ionicPopup, AuthService) {
     var welcome = this;

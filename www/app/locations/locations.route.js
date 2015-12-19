@@ -3,7 +3,7 @@
 
   angular
     .module('localsense.locations')
-    .config(routerConfig);
+    .config(['$stateProvider', '$urlRouterProvider', routerConfig]);
 
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {

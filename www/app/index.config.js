@@ -3,7 +3,7 @@
 
   angular
     .module('localsense')
-    .config(config);
+    .config(['$logProvider', config]);
 
   /** @ngInject */
   function config($logProvider) {

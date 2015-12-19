@@ -51,11 +51,11 @@
             $cordovaGeolocation.clearWatch(proximityCheck);
             callback();
           };
-      }
+      };
 
       function positionError() {
         console.log('error:', error);
-      }
+      };
     };
 
     // Credit: http://stackoverflow.com/a/27943/52160   
@@ -70,11 +70,11 @@
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
       var d = R * c; // Distance in km
       return d;
-    }
+    };
 
     function deg2rad(deg) {
       return deg * (Math.PI/180)
-    }
+    };
 
     function showAlert (title, message) {
       $ionicPopup.alert({

@@ -3,10 +3,10 @@
 
   angular
     .module('localsense')
-    .run(runBlock);
+    .run(['$ionicPlatform', '$rootScope', '$state', 'AuthService', runBlock]);
 
   /** @ngInject */
-  function runBlock($log, $ionicPlatform, $rootScope, $state, AuthService) {
+  function runBlock($ionicPlatform, $rootScope, $state, AuthService) {
 
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -27,7 +27,6 @@
       }
     });
 
-    $log.debug('runBlock end');
   }
 
 })();
