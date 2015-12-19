@@ -18,7 +18,8 @@
       'localsense.welcome',
       'localsense.dashboard',
       'localsense.locations',
-      'localsense.map'
+      'localsense.map',
+      'localsense.geolocate'
     ]);
 
 })();
