@@ -1,0 +1,17 @@
+<ion-view title="Locations">
+  <ion-content>
+    <div class="list">
+
+      <ion-list>
+        <a ng-class="{'disabled': !item.accessible}" class="item item-icon-left item-icon-right" ng-repeat="item in locations.list" ng-click="locations.selectLocation(item.id)">
+          <i class="icon ion-ios-location-outline"></i>
+          {{item.name}}
+          <p>{{item.description}}</p>
+          <i class="icon" ng-class="{'ion-ios-checkmark': item.completed, 'ion-ios-arrow-right': !item.completed}"></i>
+        </a>
+      </ion-list>
+
+    </div>
+    
+  </ion-content>
+</ion-view>

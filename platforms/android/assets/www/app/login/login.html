@@ -1,0 +1,29 @@
+<ion-view title="LocalSense">
+  <ion-content>
+  <div class="list card">
+    <div class="row">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">Game ID</span>
+          <input type="text" ng-model="login.game">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">Your Name</span>
+          <input type="text" ng-model="login.name">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-full button-positive" ng-click="login.submit()">
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>
