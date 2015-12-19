@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('localsense.geolocate', [])
-    .factory('GeoLocateService', ['$cordovaGeolocation', GeoLocateService]);
+    .factory('GeoLocateService', ['$ionicPopup', '$cordovaGeolocation', GeoLocateService]);
 
-  function GeoLocateService($cordovaGeolocation) {
+  function GeoLocateService($ionicPopup, $cordovaGeolocation) {
 
     var proximityCheck;
     var long, lat;
@@ -46,7 +46,7 @@
           var dist = getDistanceFromLatLonInKm(lat, long, position.coords.latitude, position.coords.longitude);
           console.log("dist in km is "+dist);
           console.log("accuracy is "+position.coords.accuracy);
-          
+          showAlert('LocalSense', 'You are ' + dist + ' km away (accuracy ' + position.coords.accuracy + ' m)');
           if(position.coords.accuracy <= 50 && dist <= minDistance) {
             $cordovaGeolocation.clearWatch(proximityCheck);
             callback();
@@ -75,6 +75,13 @@
     function deg2rad(deg) {
       return deg * (Math.PI/180)
     }
+
+    function showAlert (title, message) {
+      $ionicPopup.alert({
+        title: title,
+        template: message
+      });
+    };
 
   };
 
