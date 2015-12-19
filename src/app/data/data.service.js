@@ -6,7 +6,7 @@
 
   function DataService() {
 
-    var currentLocation = 1;
+    var currentLocation;
 
     return {
       player: player,
@@ -42,11 +42,12 @@
 
     function setCurrentGameLocation(id) {
       currentLocation = id;
+      console.log(currentLocation);
     }
 
     function getCurrentGameLocation() {
       var array = gameLocations();
-
+      console.log(currentLocation);
       // search locations by id
       for (var i=0; i<array.length; i++) {
         if (array[i].id == currentLocation) {

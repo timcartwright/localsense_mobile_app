@@ -2,13 +2,20 @@
   'use strict';
 
   angular.module('localsense.dashboard')
-  .controller('DashboardCtrl', ['$state', '$ionicPopup', 'AuthService', 'DataService', DashboardCtrl]);
+  .controller('DashboardCtrl', ['$scope', 'DataService', DashboardCtrl]);
 
-  function DashboardCtrl($state, $ionicPopup, AuthService, DataService) {
+  function DashboardCtrl($scope, DataService) {
     var dashboard = this;
 
-    dashboard.task = DataService.getCurrentGameLocation();
-    dashboard.status = DataService.getStatus();
+    $scope.$on('$ionicView.beforeEnter', function() {
+        activate();
+    });
+
+    function activate() {
+      dashboard.task = DataService.getCurrentGameLocation();
+      dashboard.status = DataService.getStatus();
+    }
+
   };
 
 })();
