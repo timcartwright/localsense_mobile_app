@@ -9,7 +9,7 @@
     var proximityCheck;
     var long, lat;
     var callback;
-    var duration = 10000; // Time in ms between location checks
+    var delay = 10000; // Time in ms between location checks
     var minDistance = 0.1; // Distance in km from target to trigger a hit
     var processing = false;
 
@@ -18,10 +18,10 @@
         long = longitude;
         lat = latitiude;
         callback = cb;
-        proximityCheck = window.setInterval(hb, duration);
+        hb();
       }, 
       end: function() {
-        window.clearInterval(proximityCheck);
+        clearTimeout(proximityCheck);
       },
       setTarget: function(longitude, latitiude) {
         long = longitude;
@@ -43,10 +43,15 @@
           console.log("dist in km is "+dist);
           console.log("accuracy is "+position.coords.accuracy);
           
-          if(dist <= minDistance) callback();
-        }, function(error) {
-          console.log('error:', error);
-        });
+          if(dist <= minDistance) {
+            callback();
+          } else {
+            proximityCheck = setTimeout(hb, delay);
+          };
+      },  function(error) {
+            console.log('error:', error);
+            proximityCheck = setTimeout(hb, delay);
+          });
     };
 
     // Credit: http://stackoverflow.com/a/27943/52160   

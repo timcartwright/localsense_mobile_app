@@ -69,8 +69,8 @@
         },
         { 
           id: 2,
-          lat: 18,
-          long: 17,
+          lat: 17.469005600000003,
+          long: 78.3679058,
           accuracy: 100,
           name: 'That Place',
           description: 'Another great place to go',
@@ -85,7 +85,7 @@
           name: 'The 3rd Place',
           description: 'Yet another great place to go',
           completed: false,
-          accessible: false
+          accessible: true
         }
       ];
     }
