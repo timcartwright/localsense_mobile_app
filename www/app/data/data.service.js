@@ -51,12 +51,7 @@
     }
 
     function markAsComplete(id) {
-      var array = gameLocations();
-      for (var i=0; i<array.length; i++) {
-        if (array[i].id == id) {
-          array[i].completed = true;
-        };
-      };
+      getGameLocationById(id).completed = true;
     }
 
     function getStatus() {
@@ -87,18 +82,21 @@
     }
 
     function getCurrentGameLocation() {
+      return getGameLocationById(currentLocation);
+    }
+
+    function gameLocations() {
+      return locations;
+    }
+
+    function getGameLocationById(id) {
       var array = gameLocations();
-      // search locations by id
       for (var i=0; i<array.length; i++) {
         if (array[i].id == currentLocation) {
           return array[i];
         };
       };
       return array[0]; // return first task if no match
-    }
-
-    function gameLocations() {
-      return locations;
     }
 
   };

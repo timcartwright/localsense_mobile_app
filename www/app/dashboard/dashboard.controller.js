@@ -24,9 +24,11 @@
 
     function arrived() {
       DataService.markAsComplete(dashboard.task.id);
-      showAlert('Congratulations!', 'You have reached your destination. Ready for the next one?', function() {
-        $state.go('locations');  
-      });
+      showAlert('Congratulations!',
+                'You have reached your destination. Ready for the next one?',
+                function() {
+                  $state.go('locations');  
+                });
     }
 
     function showAlert(title, message, callback) {
