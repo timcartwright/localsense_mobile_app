@@ -33,8 +33,8 @@
               { 
                 id: 3,
                 order: 3,
-                lat: 19,
-                long: 17,
+                lat: 17.469005600000003,
+                long: 78.3679058,
                 accuracy: 100,
                 name: 'The 3rd Place',
                 description: 'Yet another great place to go',
@@ -56,7 +56,23 @@
     function markAsComplete(id) {
       var location = getGameLocationById(id);
       location.completed = true;
-      markAsAccessible(location.order + 1);
+      if (gameComplete()) {
+        console.log('Game Over!');
+        return true;
+      } else {
+        markAsAccessible(location.order + 1);
+        return false;
+      };
+    }
+
+    function gameComplete() {
+      var array = gameLocations();
+      for (var i=0; i<array.length; i++) {
+        if (array[i].completed == false) {
+          return false;
+        };
+      };
+      return true;
     }
 
     function markAsAccessible(order) {

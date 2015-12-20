@@ -23,12 +23,18 @@
     }
 
     function arrived() {
-      DataService.markAsComplete(dashboard.task.id);
-      showAlert('Congratulations!',
-                'You have reached your destination. Ready for the next one?',
-                function() {
-                  $state.go('locations');  
-                });
+      var gameComplete = DataService.markAsComplete(dashboard.task.id);
+      if (gameComplete) {
+        showAlert('Congratulations!',
+                  'You have completed the Game!!'  
+                  );
+      } else {
+        showAlert('Well Done!',
+                  "You have reached your destination. Please select the next one.",
+                  function() {
+                    $state.go('locations');  
+                  });
+      };
     }
 
     function showAlert(title, message, callback) {
@@ -37,9 +43,11 @@
         template: message
       });
 
-      alert.then(function(res){
-        callback();
-      });
+      if (callback) {
+        alert.then(function(res){
+          callback();
+        });
+      };
     }
 
   };
