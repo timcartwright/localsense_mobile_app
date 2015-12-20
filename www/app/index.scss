@@ -11,8 +11,14 @@
 // endinjector
 
 
-.disabled {
+a.item.disabled, .item.disabled p,
+a.item.completed, .item.completed p {
   color: #ccc;
   pointer-events: none;
   cursor: default;
+}
+
+
+.ion-ios-checkmark {
+  color: #33cd5f;
 }

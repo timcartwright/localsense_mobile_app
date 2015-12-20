@@ -3,7 +3,7 @@
     <div class="list">
 
       <ion-list>
-        <a ng-class="{'disabled': !item.accessible}" class="item item-icon-left item-icon-right" ng-repeat="item in locations.list" ng-click="locations.selectLocation(item.id)">
+        <a ng-class="{'disabled': !item.accessible, 'completed': item.completed}" class="item item-icon-left item-icon-right" ng-repeat="item in locations.list" ng-click="locations.selectLocation(item.id)">
           <i class="icon ion-ios-location-outline"></i>
           {{item.name}}
           <p>{{item.description}}</p>
