@@ -3,10 +3,10 @@
 
   angular
     .module('localsense.welcome')
-    .config(['$stateProvider', '$urlRouterProvider', routerConfig]);
+    .config(['$stateProvider', routerConfig]);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider) {
     $stateProvider
       .state('welcome', {
         url: '/welcome',

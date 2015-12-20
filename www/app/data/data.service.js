@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('localsense.data', [])
-    .factory('DataService', DataService);
+    .factory('DataService', [DataService]);
 
   function DataService() {
 

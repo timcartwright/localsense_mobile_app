@@ -48,7 +48,7 @@
           console.log("accuracy is "+position.coords.accuracy);
           showAlert('LocalSense', 'You are ' + dist + ' km away (accuracy ' + position.coords.accuracy + ' m)');
           if(position.coords.accuracy <= 50 && dist <= minDistance) {
-            $cordovaGeolocation.clearWatch(proximityCheck);
+            proximityCheck.clearWatch();
             callback();
           };
       };

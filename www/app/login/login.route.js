@@ -3,10 +3,10 @@
 
   angular
     .module('localsense.login')
-    .config(['$stateProvider', '$urlRouterProvider', routerConfig]);
+    .config(['$stateProvider', routerConfig]);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider) {
     $stateProvider
       .state('login', {
         url: '/login',

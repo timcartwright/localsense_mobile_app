@@ -7,13 +7,13 @@
 
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('main', {
-        url: '/',
-        templateUrl: '/main/login.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      });
+    // $stateProvider
+    //   .state('login', {
+    //     url: '/',
+    //     templateUrl: '/login/login.html',
+    //     controller: 'LoginCtrl',
+    //     controllerAs: 'login'
+    //   });
 
     $urlRouterProvider.otherwise('/login');
   }
