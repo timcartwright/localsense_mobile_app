@@ -7,6 +7,8 @@
   function DashboardCtrl($scope, $state, $ionicPopup, DataService, GeoLocateService) {
     var dashboard = this;
 
+    dashboard.showLocation = GeoLocateService.showLocation;
+
     $scope.$on('$ionicView.beforeEnter', function() {
         getData();
         if (dashboard.gameStatus.complete) {

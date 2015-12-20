@@ -8,6 +8,8 @@
 
     var proximityCheck;
     var long, lat;
+    var distanceAway;
+    var accuracy;
     var callback;
     var delay = 10000; // Time in ms between location checks
     var minDistance = 0.1; // Distance in km from target to trigger a hit
@@ -28,6 +30,9 @@
       setTarget: function(longitude, latitiude) {
         long = longitude;
         lat = latitiude;
+      },
+      showLocation: function() {
+        showAlert('LocalSense', 'You are ' + distanceAway + ' km away (accuracy ' + accuracy + ' m)');
       }
     };
 
@@ -46,7 +51,9 @@
           var dist = getDistanceFromLatLonInKm(lat, long, position.coords.latitude, position.coords.longitude);
           console.log("dist in km is "+dist);
           console.log("accuracy is "+position.coords.accuracy);
-          showAlert('LocalSense', 'You are ' + dist + ' km away (accuracy ' + position.coords.accuracy + ' m)');
+          distanceAway = dist;
+          accuracy = position.coords.accuracy;
+          // showAlert('LocalSense', 'You are ' + dist + ' km away (accuracy ' + position.coords.accuracy + ' m)');
           if(position.coords.accuracy <= 50 && dist <= minDistance) {
             proximityCheck.clearWatch();
             callback();
