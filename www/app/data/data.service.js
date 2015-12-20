@@ -39,8 +39,8 @@
               { 
                 id: 3,
                 order: 3,
-                lat: 17.469005600000003,
-                long: 78.3679058,
+                lat: 17.4466218,
+                long: 78.3596481,
                 accuracy: 100,
                 name: 'The 3rd Place',
                 description: 'Yet another great place to go',

@@ -11,8 +11,9 @@
     var distanceAway;
     var accuracy;
     var callback;
-    var delay = 10000; // Time in ms between location checks
-    var minDistance = 0.1; // Distance in km from target to trigger a hit
+    var delay = 60000; // Time in ms between location checks
+    var minDistance = 0.03; // Distance in km from target to trigger a hit
+    var requiredAccuracy = 30; // Accuracy of location in m
     var processing = false;
 
     return {
@@ -37,32 +38,36 @@
     };
 
     function hb() {
-      if(processing) return;
+      if (processing) return;
       console.log('hb running');
       processing = true;
       var posOptions = {timeout: 60000, enableHighAccuracy: true, maximumAge: 0};
       proximityCheck = $cordovaGeolocation.watchPosition(posOptions);
       proximityCheck.then(null, positionError, location);
+    };
 
-      function location(position) {
-          processing = false;
-          console.log(lat, long);
-          console.log(position.coords.latitude, position.coords.longitude);
-          var dist = getDistanceFromLatLonInKm(lat, long, position.coords.latitude, position.coords.longitude);
-          console.log("dist in km is "+dist);
-          console.log("accuracy is "+position.coords.accuracy);
-          distanceAway = dist;
-          accuracy = position.coords.accuracy;
-          // showAlert('LocalSense', 'You are ' + dist + ' km away (accuracy ' + position.coords.accuracy + ' m)');
-          if(position.coords.accuracy <= 50 && dist <= minDistance) {
-            proximityCheck.clearWatch();
-            callback();
-          };
+    function location(position) {
+      processing = false;
+      console.log(lat, long);
+      console.log(position.coords.latitude, position.coords.longitude);
+      var dist = getDistanceFromLatLonInKm(lat, long, position.coords.latitude, position.coords.longitude);
+      console.log("dist in km is "+dist);
+      console.log("accuracy is "+position.coords.accuracy);
+      distanceAway = dist;
+      accuracy = position.coords.accuracy;
+      
+      if (position.coords.accuracy <= requiredAccuracy) {
+        if (dist <= minDistance) {
+          callback();
+        } else {
+          proximityCheck.clearWatch();
+          setTimeout(hb, delay);
+        };
       };
+    };
 
-      function positionError() {
-        console.log('error:', error);
-      };
+    function positionError() {
+      console.log('error:', error);
     };
 
     // Credit: http://stackoverflow.com/a/27943/52160   
