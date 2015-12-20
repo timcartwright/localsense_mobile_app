@@ -10,6 +10,7 @@
     var locations = [
               { 
                 id: 1,
+                order: 1,
                 lat: 17,
                 long: 17,
                 accuracy: 50,
@@ -20,6 +21,7 @@
               },
               { 
                 id: 2,
+                order: 2,
                 lat: 17.469005600000003,
                 long: 78.3679058,
                 accuracy: 100,
@@ -30,13 +32,14 @@
               },
               { 
                 id: 3,
+                order: 3,
                 lat: 19,
                 long: 17,
                 accuracy: 100,
                 name: 'The 3rd Place',
                 description: 'Yet another great place to go',
                 completed: false,
-                accessible: true
+                accessible: false
               }
                 ];
 
@@ -51,7 +54,13 @@
     }
 
     function markAsComplete(id) {
-      getGameLocationById(id).completed = true;
+      var location = getGameLocationById(id);
+      location.completed = true;
+      markAsAccessible(location.order + 1);
+    }
+
+    function markAsAccessible(order) {
+      getGameLocationByOrder(order).accessible = true;
     }
 
     function getStatus() {
@@ -92,7 +101,17 @@
     function getGameLocationById(id) {
       var array = gameLocations();
       for (var i=0; i<array.length; i++) {
-        if (array[i].id == currentLocation) {
+        if (array[i].id == id) {
+          return array[i];
+        };
+      };
+      return array[0]; // return first task if no match
+    }
+
+    function getGameLocationByOrder(order) {
+      var array = gameLocations();
+      for (var i=0; i<array.length; i++) {
+        if (array[i].order == order) {
           return array[i];
         };
       };
