@@ -18,6 +18,13 @@ a.item.completed, .item.completed p {
   cursor: default;
 }
 
+.item.disabled p {
+  display: none;
+}
+
+.item.disabled:after {
+  content: '**** ***** * *********** ****';
+}
 
 .ion-ios-checkmark {
   color: #33cd5f;
