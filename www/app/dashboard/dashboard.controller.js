@@ -7,7 +7,7 @@
   function DashboardCtrl($scope, $state, $ionicPopup, DataService, GeoLocateService) {
     var dashboard = this;
 
-    dashboard.showLocation = GeoLocateService.showLocation;
+    dashboard.howClose = GeoLocateService.howClose;
 
     $scope.$on('$ionicView.beforeEnter', function() {
         getData();

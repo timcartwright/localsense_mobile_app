@@ -31,7 +31,7 @@
         long = longitude;
         lat = latitiude;
       },
-      showLocation: function() {
+      howClose: function() {
         showAlert('LocalSense', 'You are ' + distanceAway + ' km away (accuracy ' + accuracy + ' m)');
       }
     };
