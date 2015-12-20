@@ -9,12 +9,16 @@
 
     $scope.$on('$ionicView.beforeEnter', function() {
         getData();
-        geoLocate();
+        if (dashboard.gameStatus.complete) {
+          console.log(dashboard.task.name);
+        } else {
+          geoLocate();
+        };
     });
 
     function getData() {
       dashboard.task = DataService.getCurrentGameLocation();
-      dashboard.status = DataService.getStatus();
+      dashboard.gameStatus = DataService.getGameStatus();
     }
 
     function geoLocate() {
@@ -23,11 +27,14 @@
     }
 
     function arrived() {
-      var gameComplete = DataService.markAsComplete(dashboard.task.id);
-      if (gameComplete) {
+      DataService.markAsComplete(dashboard.task.id);
+      if (dashboard.gameStatus.complete) {
         showAlert('Congratulations!',
-                  'You have completed the Game!!'  
-                  );
+                  'You have completed the Game!!',
+                  function() {
+                    dashboard.task.name = 'Congratulations';
+                    dashboard.task.description = 'You have completed the Game!!';
+                  });
       } else {
         showAlert('Well Done!',
                   "You have reached your destination. Please select the next one.",

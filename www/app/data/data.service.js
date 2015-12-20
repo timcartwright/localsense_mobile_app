@@ -7,6 +7,12 @@
   function DataService() {
 
     var currentLocation;
+    var gameStatus = {
+                score: 50,
+                progress: 66,
+                complete: false
+               };
+
     var locations = [
               { 
                 id: 1,
@@ -49,7 +55,7 @@
       gameLocations: gameLocations,
       getCurrentGameLocation: getCurrentGameLocation,
       setCurrentGameLocation: setCurrentGameLocation,
-      getStatus: getStatus,
+      getGameStatus: getGameStatus,
       markAsComplete: markAsComplete
     }
 
@@ -57,11 +63,9 @@
       var location = getGameLocationById(id);
       location.completed = true;
       if (gameComplete()) {
-        console.log('Game Over!');
-        return true;
+        gameStatus.complete = true;
       } else {
         markAsAccessible(location.order + 1);
-        return false;
       };
     }
 
@@ -79,11 +83,8 @@
       getGameLocationByOrder(order).accessible = true;
     }
 
-    function getStatus() {
-      return {
-        score: 50,
-        progress: 66
-      }
+    function getGameStatus() {
+      return gameStatus;
     }
 
     function player() {
