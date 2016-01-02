@@ -56,7 +56,13 @@
       getCurrentGameLocation: getCurrentGameLocation,
       setCurrentGameLocation: setCurrentGameLocation,
       getGameStatus: getGameStatus,
-      markAsComplete: markAsComplete
+      markAsComplete: markAsComplete,
+      setGame: setGame
+    }
+
+    function setGame(gameObject) {
+      locations = gameObject.location;
+      console.log(locations);
     }
 
     function markAsComplete(id) {

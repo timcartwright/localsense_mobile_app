@@ -8,11 +8,14 @@
     var login = this;
 
     login.game = '';
-    login.name = '';
+    login.id = '';
 
     login.submit = function() {
-      AuthService.logIn();
-      $state.go('welcome');
+      AuthService.logIn(login.game, login.id)
+        .then(function(login) {
+          console.log(login);
+          $state.go('welcome');
+        });
     };
   };
 
